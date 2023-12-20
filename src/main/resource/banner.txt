@@ -1,0 +1,15 @@
+
+
+Here is "EMPLOYEE" in stylized text:
+
+```
+EEEEEEE  MM     MM  PPPPPP   LL         OOOO   YY  YY EEEEEE EEEEEE
+E        M M   M M  P     P  LL        O    O   Y Y   E		 E
+EEEEE    M  M M  M  PPPPPP   LL        O    O    Y    EEEEE	 EEEEEE
+E        M   M   M  P        LL        O    O    Y    E		 E
+EEEEEEE  M       M  P        LLLLLL     OOOO     Y    EEEEEE EEEEEE
+```													
+						 				CREATED BY RAJBHOJ
+
+:: Built with Spring Boot :: ${spring-boot.version}
+
