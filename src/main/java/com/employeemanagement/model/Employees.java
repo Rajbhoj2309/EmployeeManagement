@@ -1,9 +1,16 @@
 package com.employeemanagement.model;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,27 +18,30 @@ import javax.persistence.Table;
 public class Employees {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="empno")
-	public int empno;
+	private int empno;
 	@Column(name="birthdate")
-	public Date birthdate;
+	private Date birthdate;
 	
 	@Column(name="firstname")
-	public String firstname;
+	private String firstname;
 	
 	@Column(name="lastname")
-	public String lastname;
+	private String lastname;
 	
 	@Column(name="gender")
-	public String gender;	
+	private String gender;	
 	
 	@Column(name="hiredate")
-	public Date hiredate;
+	private Date hiredate;
 	
+	@OneToMany(mappedBy = "employees", cascade = CascadeType.ALL)
+	    private Set<DeptEmp> deptemp;
 	public Employees() {
 		
 	}
-
+	
 	public Employees(Integer empNo, Date birthDate, String firstName, String lastName, String gender, Date hireDate) {
 		super();
 		this.empno = empNo;
@@ -41,7 +51,17 @@ public class Employees {
 		this.gender = gender;
 		this.hiredate = hireDate;
 	}
-
+	public Employees(int empno, Date birthdate, String firstname, String lastname, String gender, Date hiredate,
+			Set<DeptEmp> deptemp) {
+		super();
+		this.empno = empno;
+		this.birthdate = birthdate;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.gender = gender;
+		this.hiredate = hiredate;
+		this.deptemp = deptemp;
+	}
 	public Integer getEmpNo() {
 		return empno;
 	}
@@ -90,10 +110,20 @@ public class Employees {
 		this.hiredate = hireDate;
 	}
 
+	public Set<DeptEmp> getDeptemp() {
+		return deptemp;
+	}
+
+	public void setDeptemp(Set<DeptEmp> deptemp) {
+		this.deptemp = deptemp;
+	}
+
 	@Override
 	public String toString() {
-		return "Employees [empNo=" + empno + ", birthDate=" + birthdate + ", firstName=" + firstname + ", lastName="
-				+ lastname + ", gender=" + gender + ", hireDate=" + hiredate + "]";
+		return "Employees [empno=" + empno + ", birthdate=" + birthdate + ", firstname=" + firstname + ", lastname="
+				+ lastname + ", gender=" + gender + ", hiredate=" + hiredate + ", deptemp=" + deptemp + "]";
 	}
+
+	
 	
 }

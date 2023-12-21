@@ -1,8 +1,12 @@
 package com.employeemanagement.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -13,10 +17,13 @@ public class Departments {
 	
 	@Id
 	@Column(name="deptno")
-	String deptNo;
+	private String deptNo;
 	
 	@Column(name="deptname")
-	String deptName;
+	private String deptName;
+	
+	 @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+	 private Set<DeptEmp> employees;
 	
 	public Departments() {
 		
@@ -26,6 +33,13 @@ public class Departments {
 		this.deptNo=deptNo;
 		this.deptName=deptName;
 		
+	}
+
+	public Departments(String deptNo, String deptName, Set<DeptEmp> employees) {
+		super();
+		this.deptNo = deptNo;
+		this.deptName = deptName;
+		this.employees = employees;
 	}
 
 	public String getDeptNo() {
@@ -44,9 +58,18 @@ public class Departments {
 		this.deptName = deptName;
 	}
 
+	public Set<DeptEmp> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<DeptEmp> employees) {
+		this.employees = employees;
+	}
+
 	@Override
 	public String toString() {
-		return "Departments [deptNo=" + deptNo + ", deptName=" + deptName + "]";
+		return "Departments [deptNo=" + deptNo + ", deptName=" + deptName + ", employees=" + employees + "]";
 	}
-	
+
+
 }
