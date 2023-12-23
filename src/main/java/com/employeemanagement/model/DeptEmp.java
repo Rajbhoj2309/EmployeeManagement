@@ -11,10 +11,11 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import com.employeemanagement.*;
 
 @Entity
 @Table(name = "deptemp")
-@IdClass(DeptEmpId.class)
+@IdClass(empno.class)
 public class DeptEmp  {
 
 	@Id

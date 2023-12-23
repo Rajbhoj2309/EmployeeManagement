@@ -5,8 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+
 @Embeddable
-public class DeptEmpId implements Serializable{
+public class empno implements Serializable{
 	
 	@Column(name = "empno")
     private int empno;
@@ -14,10 +15,10 @@ public class DeptEmpId implements Serializable{
     @Column(name = "deptno")
     private String deptno;
     
-    public DeptEmpId() {
+    public empno() {
 	}
 
-	public DeptEmpId(int empno, String deptno) {
+	public empno(int empno, String deptno) {
 		super();
 		this.empno = empno;
 		this.deptno = deptno;
