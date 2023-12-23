@@ -12,6 +12,6 @@ EEEEEEE  M       M  P        LLLLLL     OOOO     Y    EEEEEE EEEEEE
 						 				CREATED BY RAJBHOJ
 
 :: Built with Spring Boot :: ${spring-boot.version}
- ${java.version}
+:: Built with Java Version :: ${java.version}
 
 

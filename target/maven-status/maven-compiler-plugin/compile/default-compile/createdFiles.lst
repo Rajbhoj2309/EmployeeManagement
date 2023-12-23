@@ -1,0 +1,9 @@
+com\employeemanagement\EmployeeManagementApplication.class
+com\employeemanagement\repository\DeptRepository.class
+com\employeemanagement\controller\DeptController.class
+com\employeemanagement\model\DeptEmpId.class
+com\employeemanagement\model\DeptEmp.class
+com\employeemanagement\controller\EmployeeController.class
+com\employeemanagement\model\Departments.class
+com\employeemanagement\repository\EmployeeRepository.class
+com\employeemanagement\model\Employees.class
