@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 
-@Embeddable
+//@Embeddable
 public class empno implements Serializable{
 	
 	@Column(name = "empno")
