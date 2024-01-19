@@ -1,48 +1,59 @@
 package com.employeemanagement.model;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+//@IdClass(com.employeemanagement.model.Employees.class)
 @Entity
 @Table(name = "employees")
-public class Employees {
+public class Employees implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="empno")
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name="empno",nullable = false)
 	private int empno;
-	@Column(name="birthdate")
+	@Column(name="birthdate",nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date birthdate;
 	
-	@Column(name="firstname")
+	@Column(name="firstname",columnDefinition = "VARCHAR(14)",nullable = false)
 	private String firstname;
 	
-	@Column(name="lastname")
+	@Column(name="lastname",columnDefinition = "VARCHAR(16)",nullable = false)
 	private String lastname;
 	
-	@Column(name="gender")
-	private String gender;	
+	@Column(name="gender",columnDefinition = "ENUM('M','F')",nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
 	
-	@Column(name="hiredate")
+	public enum Gender{
+		M,
+		F
+	}
+	@Column(name="hiredate",nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date hiredate;
 	
-	@OneToMany(mappedBy = "employees", cascade = CascadeType.ALL)
-	    private Set<DeptEmp> deptemp;
+	@OneToMany(mappedBy = "employees",cascade = CascadeType.ALL)
+	    private List<DeptEmp> deptemp;
 	public Employees() {
 		
 	}
 	
-	public Employees(Integer empNo, Date birthDate, String firstName, String lastName, String gender, Date hireDate) {
+	public Employees(Integer empNo, Date birthDate, String firstName, String lastName, Gender gender, Date hireDate) {
 		super();
 		this.empno = empNo;
 		this.birthdate = birthDate;
@@ -51,8 +62,8 @@ public class Employees {
 		this.gender = gender;
 		this.hiredate = hireDate;
 	}
-	public Employees(int empno, Date birthdate, String firstname, String lastname, String gender, Date hiredate,
-			Set<DeptEmp> deptemp) {
+	public Employees(int empno, Date birthdate, String firstname, String lastname, Gender gender, Date hiredate,
+			List<DeptEmp> deptemp) {
 		super();
 		this.empno = empno;
 		this.birthdate = birthdate;
@@ -94,11 +105,11 @@ public class Employees {
 		this.lastname = lastName;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
@@ -110,11 +121,11 @@ public class Employees {
 		this.hiredate = hireDate;
 	}
 
-	public Set<DeptEmp> getDeptemp() {
+	public List<DeptEmp> getDeptemp() {
 		return deptemp;
 	}
 
-	public void setDeptemp(Set<DeptEmp> deptemp) {
+	public void setDeptemp(List<DeptEmp> deptemp) {
 		this.deptemp = deptemp;
 	}
 
