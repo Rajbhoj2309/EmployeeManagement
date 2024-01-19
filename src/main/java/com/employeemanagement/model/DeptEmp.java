@@ -12,6 +12,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 @Table(name = "deptemp")
@@ -32,12 +37,14 @@ public class DeptEmp  implements Serializable{
 	@Column(name = "todate",nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date todate;
-
+	
+	@JsonBackReference
 	@ManyToOne
 //	@JoinColumn(name = "empno", insertable = false, updatable = false)
 	 @JoinColumn(name = "empno", referencedColumnName = "empno", insertable = false, updatable = false)
 	private Employees employees;
 
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "deptno",  referencedColumnName = "deptno",insertable = false, updatable = false)
 	private Departments departments;

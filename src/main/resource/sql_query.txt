@@ -1,0 +1,2 @@
+Join table relationship between employees and departmanet 
+-select employees0_.empno as empno1_2_, employees0_.birthdate as birthdat2_2_, employees0_.firstname as firstnam3_2_, employees0_.gender as gender4_2_, employees0_.hiredate as hiredate5_2_, employees0_.lastname as lastname6_2_ from employees employees0_

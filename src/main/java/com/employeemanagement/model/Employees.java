@@ -16,6 +16,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 //@IdClass(com.employeemanagement.model.Employees.class)
 @Entity
 @Table(name = "employees")
@@ -47,6 +51,7 @@ public class Employees implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date hiredate;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "employees",cascade = CascadeType.ALL)
 	    private List<DeptEmp> deptemp;
 	public Employees() {
