@@ -1,5 +1,6 @@
 package com.employeemanagement.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,16 +14,16 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(name ="departments")
-public class Departments {
+public class Departments implements Serializable{
 	
 	@Id
-	@Column(name="deptno")
+	@Column(name="deptno",columnDefinition = "CHAR(4)",nullable = false)
 	private String deptNo;
 	
-	@Column(name="deptname")
+	@Column(name="deptname",columnDefinition = "VARCHAR(40)",nullable = false,unique = true)
 	private String deptName;
 	
-	 @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "departments", cascade = CascadeType.ALL)
 	 private Set<DeptEmp> employees;
 	
 	public Departments() {
