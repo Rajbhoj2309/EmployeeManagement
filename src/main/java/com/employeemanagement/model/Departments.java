@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 
 @Entity()
@@ -23,6 +27,7 @@ public class Departments implements Serializable{
 	@Column(name="deptname",columnDefinition = "VARCHAR(40)",nullable = false,unique = true)
 	private String deptName;
 	
+	@JsonManagedReference
 	 @OneToMany(mappedBy = "departments", cascade = CascadeType.ALL)
 	 private Set<DeptEmp> employees;
 	
@@ -43,6 +48,7 @@ public class Departments implements Serializable{
 		this.employees = employees;
 	}
 
+	
 	public String getDeptNo() {
 		return deptNo;
 	}
